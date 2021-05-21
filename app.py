@@ -13,7 +13,7 @@ sess = Session()
 
 analysis = Analyse()
 
-st.title('Global Warming and Climate Change Analysis')
+st.title('Data Analyst On Life Expectancy in Human')
 sidebar = st.sidebar
 
 
@@ -75,8 +75,8 @@ def viewReport():
     reportToView = sess.query(Report).filter_by(title = selReport).first()
 
     markdown = f"""
-        ## {reportToView.title}
-        ### {reportToView.desc}
+         ##{reportToView.title}
+         ###{reportToView.desc}
         
     """
 
