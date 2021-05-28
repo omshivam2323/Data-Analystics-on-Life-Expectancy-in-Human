@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class Analyse:
 
     def __init__(self, path):
@@ -15,4 +16,10 @@ class Analyse:
     def getRegionLifeExpectancyData(self):
         return self.df.groupby('Location')['First Tooltip'].mean().sort_values()
 
-   
+    def getHealthvsLife(self):
+        life = self.df.groupby(['Location'])['Life expectany'].mean()
+        health = self.df.groupby(['Location'])['Hale Expectency'].mean()
+        return (life, health)
+
+    def getGender(self):
+        return self.df.groupby('Dim1')['First Tooltip'].mean()

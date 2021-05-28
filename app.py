@@ -10,6 +10,9 @@ Session = sessionmaker(bind=engine)
 sess = Session()
 
 regionAnalysis = Analyse('datasets/WHOregionLifeExpectancyAtBirth.csv')
+healthAnalysis = Analyse('datasets/HALElifeExpectancyAtBirth.csv')
+regionHealthAnalysis = Analyse(
+    'datasets/HALeWHOregionLifeExpectancyAtBirth.csv')
 
 
 st.title('Data Analyst On Life Expectancy in Human')
@@ -19,8 +22,6 @@ sidebar = st.sidebar
 def viewDataset():
     st.header('Data Used in Project')
     dataframe = regionAnalysis.getDataframe()
-    
-
 
     with st.spinner("Loading Data..."):
         st.dataframe(dataframe)
@@ -52,16 +53,19 @@ def viewDataset():
 
 def analyseRegion():
     st.header("Life Expectancy in various Regions")
-    data = regionAnalysis.getRegionLifeExpectacyData()
+    data = regionAnalysis.getRegionLifeExpectancyData()
     st.dataframe(data)
     st.plotly_chart(plotBar(data, "default title",
                             'Life Expectancy in Years', 'Region Name'))
 
-    data = regionAnalysis.getRegionData()
-    st.dataframe(data)
+    data = regionHealthAnalysis.getHealthvsLife()
+    st.plotly_chart(plotGroupedBar(data, ['Total Life Expectancy', 'Health Life Expectancy'], "default title",
+                                   'Life Expectancy in Years', 'Region Name'))
+
+    data = regionAnalysis.getGender()
     st.plotly_chart(plotBar(data, "default title",
                             'Life Expectancy in Years', 'Region Name'))
-                         
+
 
 sidebar.header('Choose Your Option')
 options = ['View Dataset', 'Analyse Region']
@@ -71,4 +75,3 @@ if choice == options[0]:
     viewDataset()
 elif choice == options[1]:
     analyseRegion()
- 
