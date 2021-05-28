@@ -14,3 +14,5 @@ class Analyse:
 
     def getRegionData(self):
         return self.df.groupby('Location')['First Tooltip'].mean().sort_values()
+
+   
