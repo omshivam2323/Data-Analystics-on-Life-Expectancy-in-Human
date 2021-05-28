@@ -52,6 +52,11 @@ def viewDataset():
 
 def analyseRegion():
     st.header("Life Expectancy in various Regions")
+    data = regionAnalysis.getRegionLifeExpectacyData()
+    st.dataframe(data)
+    st.plotly_chart(plotBar(data, "default title",
+                            'Life Expectancy in Years', 'Region Name'))
+
     data = regionAnalysis.getRegionData()
     st.dataframe(data)
     st.plotly_chart(plotBar(data, "default title",

@@ -12,7 +12,7 @@ class Analyse:
     def getDataframe(self):
         return self.df
 
-    def getRegionData(self):
+    def getRegionLifeExpectancyData(self):
         return self.df.groupby('Location')['First Tooltip'].mean().sort_values()
 
    
