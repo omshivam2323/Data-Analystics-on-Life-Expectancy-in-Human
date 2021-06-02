@@ -32,3 +32,9 @@ class Analyse:
 
     def getLocations(self):
         return self.df['Location'].unique()
+
+    def getCountryData(self, country):
+        return self.df[self.df['Location'] == country].groupby('Dim1')['First Tooltip'].mean()
+
+    def getCountryData(self, country):
+       return self.df[self.df['Location'] == country].groupby('Dim1')['First Tooltip'].mean()        

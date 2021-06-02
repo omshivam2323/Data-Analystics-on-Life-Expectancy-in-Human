@@ -76,6 +76,16 @@ def analyseRegion():
     st.plotly_chart(plotBar(data, "default title",
                             ' Life Expactancy (Years)', 'Life Expectancy of Africa over Time'))
 
+    C="Country"
+    data = healthAnalysis.getCountryData(C)
+    Country=st.plotly_chart(plotBar(data, "default title",
+                            'Top 20 life expectancy', ' Life Expactancy in year'))
+
+    data = healthAnalysis.getCountryData(C)
+    st.plotly_chart(plotBar(data, "default title",
+                            'Bottem 20 life expectancy', ' Life Expactancy in year'))                        
+                        
+
 
 
 sidebar.header('Choose Your Option')
