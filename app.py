@@ -13,7 +13,6 @@ regionAnalysis = Analyse('datasets/WHOregionLifeExpectancyAtBirth.csv')
 healthAnalysis = Analyse('datasets/HALElifeExpectancyAtBirth.csv')
 regionHealthAnalysis = Analyse(
     'datasets/HALeWHOregionLifeExpectancyAtBirth.csv')
-  
 
 
 st.title('Data Analyst On Life Expectancy in Human')
@@ -69,28 +68,14 @@ def analyseRegion():
 
     data = regionAnalysis.getGender()
     st.plotly_chart(plotBar(data, "default title",
-                            'Healthy Life Expactancy (Years)', 'Healthy Life Expactancy of different region'))                        
+                            'Healthy Life Expactancy (Years)', 'Healthy Life Expactancy of different region'))
 
-    data = regionAnalysis.getData()
-    st.plotly_chart(plotBar(data, "default title",
-                            ' Life Expactancy (Years)', 'Life Expectancy of Africa over Time'))   
-    
-    data = regionAnalysis.getData()
-    st.plotly_chart(plotBar(data, "default title",
-                            ' Life Expactancy (Years)', 'Life Expectancy of Americas over Time')) 
-    
-    data = regionAnalysis.getData()
-    st.plotly_chart(plotBar(data, "default title",
-                            ' Life Expactancy (Years)', 'Life Expectancy of Europe over Time')) 
+    selCon = st.selectbox(options=healthAnalysis.getLocations(), label="select Location to Analyse")
 
-    data = regionAnalysis.getData()
+    data = healthAnalysis.getCountryData(selCon)
     st.plotly_chart(plotBar(data, "default title",
-                            ' Life Expactancy (Years)', 'Life Expectancy of Eastern Mediterranean over Time'))                                                
-                                               
-    data = regionAnalysis.getData()
-    st.plotly_chart(plotBar(data, "default title",
-                            ' Life Expactancy (Years)', 'Life Expectancy of South-East Asia over Time'))                                                
-                                                                                       
+                            ' Life Expactancy (Years)', 'Life Expectancy of Africa over Time'))
+
 
 
 sidebar.header('Choose Your Option')

@@ -25,26 +25,10 @@ class Analyse:
         return self.df.groupby('Dim1')['First Tooltip'].mean()
 
     def getGender(self):
-          return self.df.groupby('Dim1')['First Tooltip'].mean()
+        return self.df.groupby('Dim1')['First Tooltip'].mean()
 
-    def getData(Africa):
-          return Africa.df.groupby('Dim1')['First Tooltip'].mean()   
+    def getCountryData(self, country):
+        return self.df[self.df['Location'] == country].groupby('Dim1')['First Tooltip'].mean()
 
-    def getData(Americas):
-          return Americas.df.groupby('Dim1')['First Tooltip'].mean() 
-
-    def getData(Europe):
-          return Europe.df.groupby('Dim1')['First Tooltip'].mean()  
-
-    def getData(Eastern):
-          return Eastern .df.groupby('Dim1')['First Tooltip'].mean()    
-
-    def getData(Asia):
-          return Asia .df.groupby('Dim1')['First Tooltip'].mean()                        
-              
-
-      
-        
-        
-       
-    
+    def getLocations(self):
+        return self.df['Location'].unique()

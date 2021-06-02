@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 
 
-def plotBar(datapoints, title, xlabel, ylabel):
+def plotBar(datapoints, title, xlabel, ylabel, color="red"):
 
     layout = go.Layout(title=title,
                        xaxis=dict(title=xlabel),
@@ -9,7 +9,7 @@ def plotBar(datapoints, title, xlabel, ylabel):
   
     fig = go.Figure(layout=layout)
 
-    fig.add_trace(go.Bar(x=datapoints.index, y=datapoints.values.flatten()))
+    fig.add_trace(go.Bar(x=datapoints.index, y=datapoints.values.flatten(), marker={'colorscale': 'blues'}))
     return fig
 
 
