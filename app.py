@@ -85,9 +85,17 @@ def analyseRegion():
     st.plotly_chart(plotBar(data, "default title",
                             'Bottem 20 life expectancy', ' Life Expactancy in year'))                        
                         
+    selCon = st.selectbox(options=healthAnalysis.getlifeExpectancyData(), label="select Location in countries to Analyse")
 
+    data = healthAnalysis.getlifeExpectancyData()
+    st.plotly_chart(plotBar(data, "default title",
+                         'aadmi',' Life Expactancy in year'  ))   
 
-
+    countries=['India', 'China', 'United States of America', 'Germany',
+           'United Kingdom of Great Britain and Northern Ireland', 
+           'Japan', 'Canada']                                           
+                         
+   
 sidebar.header('Choose Your Option')
 options = ['View Dataset', 'Analyse Region']
 choice = sidebar.selectbox(options=options, label="Choose Action")
