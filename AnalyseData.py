@@ -33,11 +33,14 @@ class Analyse:
     def getLocations(self):
         return self.df['Location'].unique()
 
-    def getCountryData(self, country):
-        return self.df[self.df['Location'] == country].groupby('Dim1')['First Tooltip'].mean()
+    def getTopCountryData(self, year, n):
+        return self.df[self.df['Period'] == year].groupby('Location').mean()['First Tooltip'].sort_values(ascending=False).head(n)
 
-    def getCountryData(self, country):
-       return self.df[self.df['Location'] == country].groupby('Dim1')['First Tooltip'].mean()        
+    def getBotCountryData(self, year, n):
+        return self.df[self.df['Period'] == year].groupby('Location').mean()['First Tooltip'].sort_values().head(n)
 
     def getAtBirthData(self):
-        return self.df.groupby('Dim1')['First Tooltip'].mean()   
+        return self.df.groupby('Dim1')['First Tooltip'].mean()
+
+    def getYears(self):
+        return self.df['Period'].unique()
