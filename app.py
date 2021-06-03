@@ -13,6 +13,7 @@ regionAnalysis = Analyse('datasets/WHOregionLifeExpectancyAtBirth.csv')
 healthAnalysis = Analyse('datasets/HALElifeExpectancyAtBirth.csv')
 regionHealthAnalysis = Analyse(
     'datasets/HALeWHOregionLifeExpectancyAtBirth.csv')
+lifeExpectAnalysis =('datasets/LifeExpectancyAtBirth.csv')   
 
 
 st.title('Data Analyst On Life Expectancy in Human')
@@ -87,13 +88,13 @@ def analyseRegion():
                         
     selCon = st.selectbox(options=healthAnalysis.getlifeExpectancyData(), label="select Location in countries to Analyse")
 
-    data = healthAnalysis.getlifeExpectancyData()
+    data = lifeExpectAnalysis.getAtBirthData()
     st.plotly_chart(plotBar(data, "default title",
-                         'aadmi',' Life Expactancy in year'  ))   
+                         'Human',' Life Expactancy in year'  ))   
 
-    countries=['India', 'China', 'United States of America', 'Germany',
-           'United Kingdom of Great Britain and Northern Ireland', 
-           'Japan', 'Canada']                                           
+    #countries=['India', 'China', 'United States of America', 'Germany',
+         #  'United Kingdom of Great Britain and Northern Ireland', 
+         # 'Japan', 'Canada']                                        
                          
    
 sidebar.header('Choose Your Option')

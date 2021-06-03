@@ -39,5 +39,5 @@ class Analyse:
     def getCountryData(self, country):
        return self.df[self.df['Location'] == country].groupby('Dim1')['First Tooltip'].mean()        
 
-    def getlifeExpectancyData(self):
+    def getAtBirthData(self):
         return self.df.groupby('Dim1')['First Tooltip'].mean()   
