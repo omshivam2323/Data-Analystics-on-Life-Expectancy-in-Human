@@ -64,26 +64,30 @@ def analyseRegion():
                                    'Life Expectancy in Years', 'Region Name'))
 
     data = regionAnalysis.getGender()
-    st.plotly_chart(plotBar(data, "default title",
-                            'Life Expectancy in Years', 'Region Name'))
+    st.dataframe(data.values)
+    col1, col2 = st.beta_columns(2)
+    col1.plotly_chart(plotBar(data, "default title",
+                              'Life Expectancy in Years', 'Region Name'))
+    col2.plotly_chart(
+        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "default title"))
 
     data = regionAnalysis.getGender()
     st.plotly_chart(plotBar(data, "default title",
                             'Healthy Life Expactancy (Years)', 'Healthy Life Expactancy of different region'))
 
-    selCon = st.selectbox(options=healthAnalysis.getLocations(),
+    selCon = st.selectbox(options=regionHealthAnalysis.getLocations(),
                           label="select Location to Analyse")
 
-    data = healthAnalysis.getCountryData(selCon)
-    st.plotly_chart(plotBar(data, "default title",
-                            ' Life Expactancy (Years)', 'Life Expectancy of Africa over Time'))
+    data = regionHealthAnalysis.getExpectancyOverTime(selCon)
+    st.dataframe(data)
+    # st.plotly_chart(plotLine(data, "Life Expectancy over time",
+    #                         ' Life Expactancy (Years)', 'Life Expectancy of Africa over Time'))
 
-
-    C="Country"
+    C = "Country"
     st.dataframe(data)
     data = healthAnalysis.getCountryData(C)
-    Country=st.plotly_chart(plotBar(data, "default title",
-                            'Top 20 life expectancy', ' Life Expactancy in year'))
+    Country = st.plotly_chart(plotBar(data, "default title",
+                                      'Top 20 life expectancy', ' Life Expactancy in year'))
     st.dataframe(data)
     data = healthAnalysis.getCountryData(C)
 
@@ -98,7 +102,8 @@ def analyseRegion():
     st.plotly_chart(plotBar(data, "default title",
                             'Bottom 20 life expectancy', ' Life Expactancy in year'))
 
-    selCon = st.selectbox(options=healthAnalysis. getLifeExpectancydata(), label="select Location in countries to Analyse")
+    selCon = st.selectbox(options=healthAnalysis. getLifeExpectancydata(
+    ), label="select Location in countries to Analyse")
 
     data = lifeExpectancyAnalysis.getAtBirthData()
     st.plotly_chart(plotBar(data, "default title",
