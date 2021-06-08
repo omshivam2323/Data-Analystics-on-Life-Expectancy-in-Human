@@ -42,5 +42,9 @@ class Analyse:
     def getAtBirthData(self):
         return self.df.groupby('Dim1')['First Tooltip'].mean()
 
+    def getLifeExpectancydata(self):
+       return self.df.groupby('Dim1')['First Tooltip'].mean()
+   
+
     def getYears(self):
         return self.df['Period'].unique()
