@@ -48,3 +48,11 @@ class Analyse:
 
     def getYears(self):
         return self.df['Period'].unique()
+
+    def getExpectancyOverTime(self, loc):
+        print('df', self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Both sexes'])
+        both =  self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Both sexes']['Life expectany']
+        female =  self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Female']['Life expectany']
+        male =  self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Male']['Life expectany']
+
+        return both, female, male

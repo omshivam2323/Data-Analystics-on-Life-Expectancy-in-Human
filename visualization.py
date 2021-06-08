@@ -25,14 +25,15 @@ def plotGroupedBar(datapoints, names, title, xlabel, ylabel):
     return fig
 
 
-def plotPie(datapoints, title, xlabel, ylabel):
-
-    layout = go.Layout(title=title,
-                       xaxis=dict(title=xlabel),
-                       yaxis=dict(title=ylabel))
+def plotPie(labels, values, title):
+    layout = go.Layout(title=title)
     fig = go.Figure(layout=layout)
-
-    fig.add_trace(go.Line(x=datapoints.index, y=datapoints.values.flatten()))
+    fig.add_trace(go.Pie(labels=labels, values=values, title='Genre', textinfo='label+percent', hole=0.2,
+                         marker=dict(colors=['#f7d468', '#74cb35'],
+                                     line_color='Gray',
+                                     line_width=1),
+                         textfont={'color': '#000', 'size': 12},
+                         textfont_size=12))
     return fig
 
 
