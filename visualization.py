@@ -84,3 +84,18 @@ def plotScatter(data, x, y, color, title, template="plotly_dark"):
     fig.update_layout(width=1000, height=500, template=template)
 
     return fig
+
+def plotChloropeth(datapoints, title="default title", xlabel="default xlabel", ylabel="default ylabel"):
+
+    layout = go.Layout(title=title,
+                       xaxis=dict(title=xlabel),
+                       yaxis=dict(title=ylabel))
+
+    fig = go.Figure({
+        "type": 'choropleth',
+        "locations": datapoints.index,
+        "locationmode": 'country names',
+        "z": datapoints.values},
+        layout=layout)
+
+    return fig

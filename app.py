@@ -71,6 +71,7 @@ def analyseRegion():
     col2.plotly_chart(
         plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"))
 
+
     data = regionAnalysis.getGender()
     col1, col2 = st.beta_columns(2)
     col1.plotly_chart(plotBar(data, "Life Expectancy",
@@ -78,21 +79,26 @@ def analyseRegion():
     col2.plotly_chart(
         plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"))
 
+
+    # Life Expectency over time
+    st.header("Life Expectancy over time")
     selCon = st.selectbox(options=regionHealthAnalysis.getLocations(),
                           label="select Location to Analyse")
 
     data = regionHealthAnalysis.getExpectancyOverTime(selCon)
-    st.dataframe(data)
+    st.dataframe(data[0])
     # st.plotly_chart(plotLine(data, "Life Expectancy over time",
     #                         ' Life Expactancy (Years)', 'Life Expectancy of Africa over Time'))
 
-    C = "Country"
-    st.dataframe(data)
-    data = healthAnalysis.getCountryData(C)
-    Country = st.plotly_chart(plotBar(data, "Life Expectancy",
-                                      'Top 20 life expectancy', ' Life Expactancy in year'))
-    st.dataframe(data)
-    data = healthAnalysis.getCountryData(C)
+    # C = "Country"
+    # st.dataframe(data)
+    # data = healthAnalysis.getCountryData(C)
+    # Country = st.plotly_chart(plotBar(data, "Life Expectancy",
+    #                                   'Top 20 life expectancy', ' Life Expactancy in year'))
+    # st.dataframe(data)
+    # data = healthAnalysis.getCountryData(C)
+
+
 
     selYear = st.selectbox(
         options=healthAnalysis.getYears(), label="Select Year")
@@ -115,6 +121,11 @@ def analyseRegion():
     # countries=['India', 'China', 'United States of America', 'Germany',
     #  'United Kingdom of Great Britain and Northern Ireland',
     # 'Japan', 'Canada']
+
+    st.header('Maps showing overall Life Expectency')
+    st.dataframe(healthAnalysis.getRegionLifeExpectancyData())
+    st.plotly_chart(plotChloropeth(
+        healthAnalysis.getRegionLifeExpectancyData()), use_container_width=True)
 
 
 sidebar.header('Choose Your Option')

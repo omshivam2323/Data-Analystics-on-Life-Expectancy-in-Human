@@ -24,9 +24,6 @@ class Analyse:
     def getGender(self):
         return self.df.groupby('Dim1')['First Tooltip'].mean()
 
-    def getGender(self):
-        return self.df.groupby('Dim1')['First Tooltip'].mean()
-
     def getCountryData(self, country):
         return self.df[self.df['Location'] == country].groupby('Dim1')['First Tooltip'].mean()
 
@@ -43,16 +40,18 @@ class Analyse:
         return self.df.groupby('Dim1')['First Tooltip'].mean()
 
     def getLifeExpectancydata(self):
-       return self.df.groupby('Dim1')['First Tooltip'].mean()
-   
+        return self.df.groupby('Dim1')['First Tooltip'].mean()
 
     def getYears(self):
         return self.df['Period'].unique()
 
     def getExpectancyOverTime(self, loc):
-        print('df', self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Both sexes'])
-        both =  self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Both sexes']['Life expectany']
-        female =  self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Female']['Life expectany']
-        male =  self.df[self.df['Location'] == loc][self.df['Dim1'] == 'Male']['Life expectany']
+
+        both = self.df.set_index('Period')[self.df['Location'] ==
+                       loc][self.df['Dim1'] == 'Both sexes']['Life expectany']
+        female = self.df[self.df['Location'] ==
+                         loc][self.df['Dim1'] == 'Female']['Life expectany']
+        male = self.df[self.df['Location'] ==
+                       loc][self.df['Dim1'] == 'Male']['Life expectany']
 
         return both, female, male
