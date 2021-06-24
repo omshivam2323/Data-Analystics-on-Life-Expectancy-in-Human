@@ -56,31 +56,34 @@ def analyseRegion():
     st.header("Life Expectancy in various Regions")
     data = regionAnalysis.getRegionLifeExpectancyData()
     st.dataframe(data)
-    st.plotly_chart(plotBar(data, "default title",
-                            'Life Expectancy in Years', 'Region Name'))
+    st.plotly_chart(plotBar(data, "Life Expectancy",
+                            'Life Expectancy in Years', 'Region Name'),use_container_width=True)
 
     data = regionHealthAnalysis.getHealthvsLife()
     st.plotly_chart(plotGroupedBar(data, ['Total Life Expectancy', 'Health Life Expectancy'], "Life Expectancy",
-                                   'Life Expectancy in Years', 'Region Name'))
+                                   'Life Expectancy in Years', 'Region Name'),use_container_width=True)
 
     data = regionAnalysis.getGender()
     st.dataframe(data.values)
     col1, col2 = st.beta_columns(2)
     col1.plotly_chart(plotBar(data, "Life Expectancy",
-                              'Life Expectancy in Years', 'Region Name'))
+                              'Life Expectancy in Years', 'Region Name'),use_container_width=True)
     col2.plotly_chart(
-        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"))
+        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"),use_container_width=True)
 
     data = regionAnalysis.getGender()
     col1, col2 = st.beta_columns(2)
     col1.plotly_chart(plotBar(data, "Life Expectancy",
-                              'Healthy Life Expectancy in Years', 'Healthy Life Expectancy in Region Name'))
+                              'Healthy Life Expectancy in Years', 'Healthy Life Expectancy in Region Name'),use_container_width=True)
     col2.plotly_chart(
-        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"))
+        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"),use_container_width=True)
 
     # Life Expectency over time
     st.header("Life Expectancy over time")
     st.image('images/expec_over_time.png', use_column_width=True)
+    st.image('images/skm_over time.png', use_column_width=True)
+    st.image('images/skm2_over time.png', use_column_width=True)
+    st.image('images/skm3_over_time.png', use_column_width=True)
 
     # C = "Country"
     # st.dataframe(data)
@@ -94,7 +97,7 @@ def analyseRegion():
         options=healthAnalysis.getYears(), label="Select Year")
     data = healthAnalysis.getTopCountryData(int(selYear), 20)
     st.plotly_chart(plotBar(data, "Life Expectancy",
-                            'Top 20 life expectancy', ' Life Expactancy in year'))
+                            'Top 20 life expectancy', ' Life Expactancy in year'),use_container_width=True)
 
     data = healthAnalysis.getBotCountryData(int(selYear), 20)
 
@@ -108,13 +111,12 @@ def analyseRegion():
     st.plotly_chart(plotBar(data, "Life Expectancy",
                             'Human', ' Life Expactancy in year'), use_container_width=True)
 
-    # countries=['India', 'China', 'United States of America', 'Germany',
-    #  'United Kingdom of Great Britain and Northern Ireland',
-    # 'Japan', 'Canada']
+  
 
     st.header('Maps showing overall Life Expectency')
     st.plotly_chart(plotChloropeth(
         healthAnalysis.getRegionLifeExpectancyData()), use_container_width=True)
+    st.plotly_chart(plotChloropeth( lifeExpectancyAnalysis.getLifeExpectancydata()) ,use_container_width=True)
 
 
 def overview():

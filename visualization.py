@@ -74,7 +74,7 @@ def plotHistogram(datapoints, title, xlabel, ylabel):
 
 
 def plotScatter(data, x, y, color, title, template="plotly_dark"):
-    fig = px.scatter(data_frame=data, x=x, y=y, color=color,
+    fig = plotBar.scatter(data_frame=data, x=x, y=y, color=color,
                      title=title, trendline="ols")
 
     fig.update_traces(marker=dict(symbol="diamond", size=10,
@@ -85,7 +85,7 @@ def plotScatter(data, x, y, color, title, template="plotly_dark"):
 
     return fig
 
-def plotChloropeth(datapoints, title="default title", xlabel="default xlabel", ylabel="default ylabel"):
+def plotChloropeth(datapoints, title="Life Expectancy", xlabel="default xlabel", ylabel="default ylabel"):
 
     layout = go.Layout(title=title,
                        xaxis=dict(title=xlabel),
