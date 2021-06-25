@@ -57,26 +57,28 @@ def analyseRegion():
     data = regionAnalysis.getRegionLifeExpectancyData()
    # st.dataframe(data)
     st.plotly_chart(plotBar(data, "Life Expectancy",
-                            'Life Expectancy in Years', 'Region Name'),use_container_width=True)
+                            'Life Expectancy in Years', 'Region Name'), use_container_width=True)
+
+    st.markdown('---')
 
     data = regionHealthAnalysis.getHealthvsLife()
     st.plotly_chart(plotGroupedBar(data, ['Total Life Expectancy', 'Health Life Expectancy'], "Life Expectancy",
-                                   'Life Expectancy in Years', 'Region Name'),use_container_width=True)
+                                   'Life Expectancy in Years', 'Region Name'), use_container_width=True)
 
     data = regionAnalysis.getGender()
    # st.dataframe(data.values)
     col1, col2 = st.beta_columns(2)
     col1.plotly_chart(plotBar(data, "Life Expectancy",
-                              'Life Expectancy in Years', 'Region Name'),use_container_width=True)
+                              'Life Expectancy in Years', 'Region Name'), use_container_width=True)
     col2.plotly_chart(
-        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"),use_container_width=True)
+        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"), use_container_width=True)
 
     data = regionAnalysis.getGender()
     col1, col2 = st.beta_columns(2)
     col1.plotly_chart(plotBar(data, "Life Expectancy",
-                              'Healthy Life Expectancy in Years', 'Healthy Life Expectancy in Region Name'),use_container_width=True)
+                              'Healthy Life Expectancy in Years', 'Healthy Life Expectancy in Region Name'), use_container_width=True)
     col2.plotly_chart(
-        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"),use_container_width=True)
+        plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"), use_container_width=True)
 
     # Life Expectency over time
     st.header("Life Expectancy over time")
@@ -98,7 +100,7 @@ def analyseRegion():
         options=healthAnalysis.getYears(), label="Select Year")
     data = healthAnalysis.getTopCountryData(int(selYear), 20)
     st.plotly_chart(plotBar(data, "Life Expectancy",
-                            'Top 20 life expectancy', ' Life Expactancy in year'),use_container_width=True)
+                            'Top 20 life expectancy', ' Life Expactancy in year'), use_container_width=True)
 
     data = healthAnalysis.getBotCountryData(int(selYear), 20)
 
@@ -112,20 +114,19 @@ def analyseRegion():
     st.plotly_chart(plotBar(data, "Life Expectancy",
                             'Human', ' Life Expactancy in year'), use_container_width=True)
 
-  
-
     st.header('Maps showing overall Life Expectency')
     st.plotly_chart(plotChloropeth(
         healthAnalysis.getRegionLifeExpectancyData()), use_container_width=True)
-    st.plotly_chart(plotChloropeth( lifeExpectancyAnalysis.getLifeExpectancydata()) ,use_container_width=True)
+    st.plotly_chart(plotChloropeth(
+        lifeExpectancyAnalysis.getLifeExpectancydata()), use_container_width=True)
 
 
 def overview():
     st.header(" The term “life expecting” refers to the number of years a person can expect to live."
-    "Life expectancy is based on estimate of the average age that members of a particular group will be when they die."
-    "In mathematical terms, life expectancy refers to the expected number of years   remaining for an individual at any given age"
-    "In formulaic terms, life expectancy is denoted by ex, where, “e” represents the expected number of years remaining and “x” represents the person’s present age"
-    "Life expectancy provides a useful measure of average life spans, and life span equality gives insights into uncertainty about the age at death.")
+              "Life expectancy is based on estimate of the average age that members of a particular group will be when they die."
+              "In mathematical terms, life expectancy refers to the expected number of years   remaining for an individual at any given age"
+              "In formulaic terms, life expectancy is denoted by ex, where, “e” represents the expected number of years remaining and “x” represents the person’s present age"
+              "Life expectancy provides a useful measure of average life spans, and life span equality gives insights into uncertainty about the age at death.")
 
 #st.image('images/life ecpect image.png', use_column_width=True)
 
