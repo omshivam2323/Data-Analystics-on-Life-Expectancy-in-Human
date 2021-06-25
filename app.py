@@ -55,7 +55,7 @@ def viewDataset():
 def analyseRegion():
     st.header("Life Expectancy in various Regions")
     data = regionAnalysis.getRegionLifeExpectancyData()
-    st.dataframe(data)
+   # st.dataframe(data)
     st.plotly_chart(plotBar(data, "Life Expectancy",
                             'Life Expectancy in Years', 'Region Name'),use_container_width=True)
 
@@ -64,7 +64,7 @@ def analyseRegion():
                                    'Life Expectancy in Years', 'Region Name'),use_container_width=True)
 
     data = regionAnalysis.getGender()
-    st.dataframe(data.values)
+   # st.dataframe(data.values)
     col1, col2 = st.beta_columns(2)
     col1.plotly_chart(plotBar(data, "Life Expectancy",
                               'Life Expectancy in Years', 'Region Name'),use_container_width=True)
@@ -84,6 +84,7 @@ def analyseRegion():
     st.image('images/skm_over time.png', use_column_width=True)
     st.image('images/skm2_over time.png', use_column_width=True)
     st.image('images/skm3_over_time.png', use_column_width=True)
+    st.image('images/skm4_over.png', use_column_width=True)
 
     # C = "Country"
     # st.dataframe(data)
@@ -120,7 +121,13 @@ def analyseRegion():
 
 
 def overview():
-    st.header('overview')
+    st.header(" The term “life expecting” refers to the number of years a person can expect to live."
+    "Life expectancy is based on estimate of the average age that members of a particular group will be when they die."
+    "In mathematical terms, life expectancy refers to the expected number of years   remaining for an individual at any given age"
+    "In formulaic terms, life expectancy is denoted by ex, where, “e” represents the expected number of years remaining and “x” represents the person’s present age"
+    "Life expectancy provides a useful measure of average life spans, and life span equality gives insights into uncertainty about the age at death.")
+
+#st.image('images/life ecpect image.png', use_column_width=True)
 
 
 sidebar.header('Choose Your Option')
