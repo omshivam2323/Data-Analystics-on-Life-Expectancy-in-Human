@@ -128,7 +128,7 @@ def overview():
               "In formulaic terms, life expectancy is denoted by ex, where, “e” represents the expected number of years remaining and “x” represents the person’s present age"
               "Life expectancy provides a useful measure of average life spans, and life span equality gives insights into uncertainty about the age at death.")
 
-#st.image('images/life ecpect image.png', use_column_width=True)
+st.image('images/life-expectancy-drops.png', use_column_width=True)
 
 
 sidebar.header('Choose Your Option')
