@@ -64,6 +64,7 @@ def analyseRegion():
     data = regionHealthAnalysis.getHealthvsLife()
     st.plotly_chart(plotGroupedBar(data, ['Total Life Expectancy', 'Health Life Expectancy'], "Life Expectancy",
                                    'Life Expectancy in Years', 'Region Name'), use_container_width=True)
+    st.markdown('---')
 
     data = regionAnalysis.getGender()
    # st.dataframe(data.values)
@@ -72,6 +73,7 @@ def analyseRegion():
                               'Life Expectancy in Years', 'Region Name'), use_container_width=True)
     col2.plotly_chart(
         plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"), use_container_width=True)
+    st.markdown('---')
 
     data = regionAnalysis.getGender()
     col1, col2 = st.beta_columns(2)
@@ -79,14 +81,20 @@ def analyseRegion():
                               'Healthy Life Expectancy in Years', 'Healthy Life Expectancy in Region Name'), use_container_width=True)
     col2.plotly_chart(
         plotPie(['Both Sexes', 'Female', 'Male'], data.values, "Life Expectancy"), use_container_width=True)
+    st.markdown('---')
 
     # Life Expectency over time
     st.header("Life Expectancy over time")
     st.image('images/expec_over_time.png', use_column_width=True)
+    st.markdown('---')
     st.image('images/skm_over time.png', use_column_width=True)
+    st.markdown('---')
     st.image('images/skm2_over time.png', use_column_width=True)
+    st.markdown('---')
     st.image('images/skm3_over_time.png', use_column_width=True)
+    st.markdown('---')
     st.image('images/skm4_over.png', use_column_width=True)
+    st.markdown('---')
 
     # C = "Country"
     # st.dataframe(data)
@@ -115,20 +123,20 @@ def analyseRegion():
                             'Human', ' Life Expactancy in year'), use_container_width=True)
 
     st.header('Maps showing overall Life Expectency')
-    st.plotly_chart(plotChloropeth(
+    st.plotly_chart(plotChloropeth(  
         healthAnalysis.getRegionLifeExpectancyData()), use_container_width=True)
     st.plotly_chart(plotChloropeth(
         lifeExpectancyAnalysis.getLifeExpectancydata()), use_container_width=True)
 
 
 def overview():
-    st.header(" The term “life expecting” refers to the number of years a person can expect to live."
-              "Life expectancy is based on estimate of the average age that members of a particular group will be when they die."
-              "In mathematical terms, life expectancy refers to the expected number of years   remaining for an individual at any given age"
-              "In formulaic terms, life expectancy is denoted by ex, where, “e” represents the expected number of years remaining and “x” represents the person’s present age"
-              "Life expectancy provides a useful measure of average life spans, and life span equality gives insights into uncertainty about the age at death.")
+    st.header(" The term “life expecting” refers to the number of years a person can expect to live.")
+    st.header("Life expectancy is based on estimate of the average age that members of a particular group will be when they die.")
+    st.header("In mathematical terms, life expectancy refers to the expected number of years   remaining for an individual at any given age")
+    st.header("In formulaic terms, life expectancy is denoted by ex, where, “e” represents the expected number of years remaining and “x” represents the person’s present age")
+    st.header("Life expectancy provides a useful measure of average life spans, and life span equality gives insights into uncertainty about the age at death.")
 
-st.image('images/life-expectancy-drops.png', use_column_width=True)
+#st.image('images/v.png', use_column_width=True)
 
 
 sidebar.header('Choose Your Option')
