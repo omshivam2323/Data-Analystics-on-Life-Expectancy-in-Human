@@ -139,6 +139,10 @@ def overview():
 #st.image('images/v.png', use_column_width=True)
 
 
+st.image('images/logo.jpg', use_column_width=True)
+
+
+
 sidebar.header('Choose Your Option')
 options = ['Project Overview', 'View Dataset', 'Analyse Region']
 choice = sidebar.selectbox(options=options, label="Choose Action")
